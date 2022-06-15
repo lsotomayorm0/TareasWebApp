@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tareas.web.app.backend.model.Tarea;
 
+//Implementación de la interfaz como servicio para la construcción del API segun es recomendado.
 public interface TareaService {
 	
 	Tarea saveTarea(Tarea tarea);

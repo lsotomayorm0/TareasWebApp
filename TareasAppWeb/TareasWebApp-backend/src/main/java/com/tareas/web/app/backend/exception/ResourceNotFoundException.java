@@ -3,6 +3,7 @@ package com.tareas.web.app.backend.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+//Siguiendo las recomendaciones para la contrucción de un API se implementó una clase para el control de excepciones
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class ResourceNotFoundException extends RuntimeException{
 	

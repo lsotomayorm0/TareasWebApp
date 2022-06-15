@@ -9,6 +9,7 @@ import com.tareas.web.app.backend.model.Tarea;
 import com.tareas.web.app.backend.repository.TareaRepository;
 import com.tareas.web.app.backend.service.TareaService;
 
+//Implementación de los métodos declarados en la interfaz, el uso de JPA simplifica notablemente la forma de guardar los datos en la BD.
 @Service
 public class TareaServiceImpl implements TareaService{
 	
@@ -31,7 +32,7 @@ public class TareaServiceImpl implements TareaService{
 
 	@Override
 	public Tarea updateTarea(Tarea tarea, int idtarea) {
-		Tarea existingtarea = tarearepository.findById(idtarea).orElseThrow(() -> new ResourceNotFoundException("Employee", "idtarea", idtarea));
+		Tarea existingtarea = tarearepository.findById(idtarea).orElseThrow(() -> new ResourceNotFoundException("Tarea", "idtarea", idtarea));
 		
 		existingtarea.setTitulo(tarea.getTitulo());
 		existingtarea.setEstado(tarea.getEstado());
@@ -42,7 +43,7 @@ public class TareaServiceImpl implements TareaService{
 
 	@Override
 	public void deleteTarea(int idtarea) {
-		tarearepository.findById(idtarea).orElseThrow(() -> new ResourceNotFoundException("Employee", "Id", idtarea));
+		tarearepository.findById(idtarea).orElseThrow(() -> new ResourceNotFoundException("Tarea", "idtarea", idtarea));
 		tarearepository.deleteById(idtarea);
 	}
 

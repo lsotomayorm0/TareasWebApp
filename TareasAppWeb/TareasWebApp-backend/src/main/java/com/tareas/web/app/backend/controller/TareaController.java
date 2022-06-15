@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tareas.web.app.backend.model.Tarea;
 import com.tareas.web.app.backend.service.TareaService;
 
+//Implementación del API con los métodos HTTP (GET, POST, PUT, DELETE) para la manipulación de datos según los principios de implementación REST
 @RestController
 @RequestMapping("/api/tareas")
 public class TareaController {
@@ -26,22 +27,26 @@ public class TareaController {
 		super();
 		this.tareaservice = tareaservice;
 	}
-
+	
+	//Lista de tareas con método GET
 	@GetMapping
 	public List<Tarea> getAllTareas(){
 		return tareaservice.getAllTareas();
 	}
 	
+	//Nueva tarea con método POST
 	@PostMapping()
 	public ResponseEntity<Tarea> createTarea(@RequestBody Tarea tarea) {
 		return new ResponseEntity<Tarea>(tareaservice.saveTarea(tarea), HttpStatus.CREATED);
 	}
 	
+	//Actualización de tarea con método PUT
 	@PutMapping("{idtarea}")
 	public ResponseEntity<Tarea> updateTarea(@PathVariable("idtarea") int idtarea, @RequestBody Tarea tarea){
 		return new ResponseEntity<Tarea>(tareaservice.updateTarea(tarea, idtarea), HttpStatus.OK);
 	}
 	
+	//Eliminación de tarea con método DELETE
 	@DeleteMapping("{idtarea}")
 	public ResponseEntity<String> deleteTarea(@PathVariable("idtarea") int idtarea){
 		tareaservice.deleteTarea(idtarea);
